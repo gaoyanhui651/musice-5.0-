@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="swiper-3.4.2.min.css">
+</head>
+<body>
+  <div id="app">
+        <div id="header">
+            <div class="logo">
+                <img src="img/logo.png" alt="">
+                <span>Chicken Music</span>
+            </div>
+        </div>
+        <div id="four">
+                <ul>
+                  <router-link to = "/recommend">推荐</router-link>
+                  <router-link to = "/singer">歌手</router-link>
+                  <router-link to = "/rank" @click.native = "$store.commit('starname2')">排行</router-link>
+                  <router-link to = "/search">搜索</router-link>
+                </ul>
+        </div>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+  </div>
+</body>
+<!-- 推荐列表页的模版 -->
+ <template id="recommend">
+        <div id="recommend1">
+            <!-- 推荐列表页的轮播图 -->
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for = "item in slider">
+                      <img :src="item.picUrl" alt="">
+                </div>
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+            <div id = "hot">热门歌单推荐</div>
+            <ul id = "list1">
+              <!-- 推荐列表页的歌单列表 -->
+              <router-link 
+                        to = "/big" tag = "li"
+                        @click.native= "$store.commit('starname',index+1)" 
+                        v-for = "(item,index) in list">
+                    <img :src="item.imgurl" alt="">
+                   <div>
+                      <p v-text = 'item.creator.name'></p>
+                      <span v-text = "item.dissname"></span>
+                   </div>
+              </router-link>
+            </ul>
+        </div>
+ </template>
+ <!-- 歌手列表页 -->
+ <template id="singer">
+      <div>
+          <ul id = "singerList">
+              <template v-for = "singer in alphabet">
+              <p class = "p1">{{singer.type}}</p>
+                   <router-link 
+                        to = "/big1"
+                        @click.native= "$store.commit('starname')"
+                        v-for = "n in singer.content"
+                        tag = "li"
+                      >
+                      <img src="img/page2/1.jpg" alt="" >
+                      <span>{{n}}</span>
+                   </router-link>
+              </template>
+          </ul>
+          <ul id="aList">
+                <li v-for = "n in alp" @click = "jump(n)">{{n}}</li>
+          </ul>
+      </div>
+ </template>
+<template id="big">
+      <div id = "star1">
+          <div>
+              <p class = "p">
+                <img src="img/goback.png" @click = "go">
+                <span></span>
+              </p>
+              <img class = "bigpic" :src="$store.state.url" alt="">
+          </div>
+          <ul>
+              <li v-for = "item in $store.state.starSong">
+                  <h3>{{item.songname}}</h3>
+                  <p>{{item.singer[0].name}}{{item.albumname}}</p>
+              </li>
+          </ul>
+      </div>
+</template>
+<template id="big1">
+      <div id = "star1">
+          <div>
+              <p class = "p">
+                <img src="img/goback.png" @click = "go">
+                <span></span>
+              </p>
+              <template v-for = "(item1,index) in $store.state.singerlist">
+                  <img class = "bigpic" :src=$store.state.src1+item1.musicData.singer[0].mid+$store.state.src2
+                    v-show = "index-($store.state.singerlist.length-2) > 0 ">
+              </template>
+          </div>
+          <ul>
+              <li v-for = "item in $store.state.singerlist">
+                  <h3 v-text = "item.musicData.songname"></h3>
+                  <p v-text = "item.musicData.singer[0].name"></p>
+              </li>
+          </ul>
+      </div>
+</template>
+
+<!-- 排行榜列表页的模版 -->
+ <template id="rank">
+      <ul id = "rank1">
+        <!-- 每一li跳转到相应的页面 -->
+        <router-link
+                to = "/rankDetail" 
+                @click.native = "$store.commit('rankQuery',item.id)"
+                v-for = "item in $store.state.rankArr" 
+                tag = "li"
+                >
+            <img :src="item.picUrl" alt="">
+            <div>
+                <h3 v-text = "item.topTitle"></h3>
+                <p v-for = "n in 3">
+                    <span v-text = "n"></span>
+                    <span v-text ="item.songList[n-1].songname" class = "second"></span>
+                    <span v-text ="item.songList[n-1].singername"></span>
+                </p>
+            </div>
+        </router-link>
+      </ul>
+ </template>
+ <!-- 排行榜列表页点击跳转的模版 -->
+<template id="rankDetail">
+      <div id = "star1">
+          <div>
+              <p class = "p">
+                <img src="img/goback.png" @click = "go">
+              </p>
+              <img class = "bigpic" :src="$store.state.rank_topinfo.pic_album">
+              <div class="focus">
+                  <p v-text = "$store.state.rank_topinfo.ListName"></p>
+                  <router-link
+                       to = "/play"
+                       :id = "$store.state.rank_topinfo.topID"
+                       tag = "span"
+                       @click.native = "$store.commit('playlist')">
+                      <img 
+                      v-show = "$store.state.rank_topinfo.pic_album"
+                      src="img/play.png">
+                  </router-link >
+              </div>
+          </div>
+          <ul>
+              <router-link 
+                    to = "/play"
+                    tag = "li"
+                    @click.native = "$store.commit('playlist')"
+                    v-for = "item in $store.state.rank_songlist">
+                      <h3 v-text = 'item.data.songname'></h3>
+                      <p>
+                        <span v-text = 'item.data.albumname'></span>
+                        <span v-text = 'item.data.albumdesc'></span>
+                      </p>
+              </router-link>
+          </ul>
+      </div>
+</template>
+<!-- 播放页面的设置 -->
+<template id="play">
+      <div id = "play1">
+          <ul>
+            <li></li>
+          </ul>
+      </div>
+</template>
+ <template id="search">
+    <div id = "search1">
+        <input type="text" v-model = "s" @keyup = "get($event)"
+        @keyup.ente>
+         <ul>
+             <li v-for = "item in list">{{item.songname}}</li>
+         </ul>
+    </div>
+ </template>
+ <script src="lib/vue.js"></script>
+ <script src="swiper-3.4.2.min.js"></script>
+ <script src="lib/vue-router.js"></script>
+ <script src="lib/vue-resource.js"></script>
+ <script src="lib/vuex.js"></script>
+ <script type="text/javascript" src="lib/jquery.js"></script>
+ <script src="main.js"></script>
+ <script>
+   window.onload = function(){
+    var mySwiper1 = new Swiper('#recommend1 .swiper-container', {
+          autoplay:1000,
+          autoplayDisableOnInteraction : false,
+          loop : true,
+          pagination : '.swiper-pagination',
+          paginationClickable :true,
+      })
+   }
+ </script>
+</html>

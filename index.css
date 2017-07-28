@@ -1,0 +1,326 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: #f4f4f4;
+	padding-top: 88px;
+}
+a{
+	text-decoration: none;
+}
+#header{
+	width: 100%;
+	height: 44px;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	background: #31c27c;
+	z-index: 100;
+}
+#header .logo{
+	text-align: center;
+	padding-top: 5px;
+}
+#header .logo img{
+	width: 30px;
+	height: 32px;
+}
+#header .logo span{
+	font-size: 18px;
+	color:#ffcd32;
+	vertical-align: super;
+}
+#four{
+	width: 100%;
+	height: 44px;
+	font-size: 20px;
+	color:rgba(0,0,0,.6);
+	position: fixed;
+	left: 0px;
+	top: 44px;
+	background: #fff;
+	z-index: 100;
+}
+#four a{
+	float: left;
+	display: block;
+	width: 25%;
+	height: 44px;
+	text-align: center;
+	line-height: 44px;
+	color:#a6a6a6;
+	font-size: 20px;
+}
+#recommend1 img{
+	width: 100%;
+	display: block;
+}
+
+#hot{
+	width: 100%;
+	height: 45px;
+	line-height:45px;
+	text-align: center;
+	font-size: 22px;
+	color:#ffcd32;
+	background: #31c27c;
+}
+// 首页列表
+
+#list1{
+	width: 100%;
+	background: #f4f4f4;
+}
+#list1 li{
+	width: -webkit-calc(100% - 20px);
+	box-sizing: border-box;
+	height: 60px;
+    margin: 10px 10px 15px 10px;
+}
+#list1 li img{
+	width: 60px;
+	float: left;
+}
+#list1 li div{
+	width: 80%;
+	margin-left: 20%;
+	padding-left: 5px;
+}
+#list1 li div p{
+	font-size: 14px;
+	color:#000;
+	padding: 6px 0px 5px 0px;
+}
+#list1 li div span{
+	font-size: 10px;
+	color:#000;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+// 第二页列表
+
+#singerList{
+	width: 100%;
+}
+#singerList .p1{
+	width: 100%;
+	height: 30px;
+	text-indent: 2em;
+	color:rgba(255,255,255,0.5);
+	background: #333;
+	margin: 5px 0 0 0;
+	line-height: 30px;
+}
+#singerList li{
+	width: 100%;
+	box-sizing: border-box;
+	padding: 20px 0px 0px 30px;
+	list-style: none;
+	overflow: hidden;
+}
+#singerList li img{
+	float: left;
+	width: 50px;
+	border-radius: 25px;
+}
+#singerList li span{
+	float: left;
+	display: block;
+	padding-top: 13px;
+	margin-left: 10%;
+	color: rgba(0,0,0,0.5);
+    font-size: 14px;
+}
+
+#aList{
+	width: 20px;
+	position: fixed;
+	right: 0px;
+	top: 100px;
+	background: gray;
+	font-size: 12px;
+	color:rgba(255,255,255,0.5);
+	background: #000;
+}
+#aList li{
+	text-align: center;
+	list-style: none;
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+}
+
+// 第三页
+
+#rank1{
+	width: 100%;
+}
+#rank1 li{
+	margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    background: #fff;
+    height: 100px;
+    list-style: none;
+    margin-bottom: 10px;
+}
+#rank1 li img{
+	float: left;
+	width: 100px;
+}
+#rank1 li div{
+	box-sizing: border-box;
+	padding-left: 120px;
+	width: 100%;
+	height: 100px;
+}
+#rank1 li div h3{
+	font-size: 16px;
+    color: #000;
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+#rank1 li div p{
+	font-size: 14px;
+    color: rgba(0,0,0,.5);
+    margin-bottom: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#rank1 li div p .second{
+	color: #000;
+    margin-left: 8px;
+    margin-right: 5px;
+}
+
+#search1{
+	width: 100%;
+	padding-top: 20px;
+	// text-align: center;
+}
+#search1 input{
+	width: 80%;
+	height: 40px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    padding-left: 25px;
+    box-sizing: border-box;
+    background: #333;
+    color: #fff;
+    margin-left: 10%;
+}
+#search1 ul{
+	width: 100%;
+	margin-top: 10px;
+}
+#search1 ul li{
+	width: 100%;
+	height: 36px;
+	padding: 0 15%;
+	line-height: 36px;
+	color:rgba(0,0,0,0.3);
+	font-size: 14px;
+}
+
+#star1{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: -8px;
+    background:#333;
+    z-index: 999;
+}
+#star1 .p{
+	width: 100%;
+	height: 50px;
+	position: fixed;
+	line-height: 40px;
+	text-align: center;
+}
+#star1 .p img{
+	float: left;
+	width: 22px;
+	padding:10px 0 0 10px;
+}
+#star1 .bigpic{
+	width: 100%;
+}
+#star1 .focus{
+	 position: absolute;
+    left: 22px;
+    top: 33%;
+    color: #fff;
+    font-size: 24px;
+}
+#star1 .focus span{
+	position: absolute;
+    z-index: 99900;
+    left: 289px;
+    top: -11px;
+}
+#star1 .focus span img{
+	width: 48px;
+}
+#star1 ul{
+	width: 100%;
+	position: absolute;
+	top:40%;
+	left: 0px;
+	z-index: 10000;
+	background: rgb(152,108,79);
+	box-shadow: 0px -53px 10px rgba(0,0,0,.4);
+}
+#star1 ul li{
+	width: 80%;
+	height: 60px;
+	padding-left: 10%;
+	padding-top: 10px;
+	box-sizing: border-box;
+	list-style: none;
+	color:#fff;
+	border-bottom: 1px solid dashed;
+}
+#star1 ul li h3{
+	font-size: 18px;
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#star1 ul li p{
+	color: rgba(255,255,255,.6);
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#playheader{
+	width: 100%;
+	height: 110px;
+	padding:15px;
+}
+#play1{
+	position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: -8px;
+    background:#333;
+    z-index: 2000;
+}
+#play1 ul{
+	padding:30px 20px 0px 20px;
+}
+#play1 ul li{
+	width: 100%;
+	height: 50px;
+}
