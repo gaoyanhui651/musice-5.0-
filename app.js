@@ -5,7 +5,7 @@
  */
 
 var MINE_TYPES = {
-	'html': 	'text/html',
+	'html':   	'text/html',
 	'xml': 		'text/xml',
 	'txt': 		'text/plain',
 	'css': 		'text/css',
